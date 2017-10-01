@@ -13,9 +13,16 @@ import android.support.annotation.NonNull;
  * Created by Ferart on 10/1/2017.
  */
 
-@Entity(indices={@Index(value="idEvaluation", unique=true)}, foreignKeys = @ForeignKey(entity = Reviewer.class,
-        parentColumns = "uid",
-        childColumns = "reviewer_id"))
+@Entity(indices = {@Index(value = "idEvaluation", unique = true)}, foreignKeys =
+        {@ForeignKey(entity = Reviewer.class,
+                parentColumns = "uid",
+                childColumns = "reviewer_id",
+                onUpdate = ForeignKey.CASCADE,
+                onDelete = ForeignKey.CASCADE),
+                @ForeignKey(entity = CampaignProposal.class,
+                        parentColumns = "idProposal",
+                        childColumns = "proposal_id",
+                        onDelete = ForeignKey.CASCADE)})
 @TypeConverters(Converters.class)
 public class Evaluation {
 
@@ -25,6 +32,8 @@ public class Evaluation {
 
     @ColumnInfo(name = "reviewer_id")
     private int reviewerId;
+    @ColumnInfo(name = "proposal_id")
+    private int idProposal;
     private int score; //(0-100]
     private String review;
     private String fullEvaluationURL;

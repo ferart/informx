@@ -1,8 +1,10 @@
 package com.ferart.informx.models.data.entities;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
-import android.arch.persistence.room.Relation;
+
+import java.util.List;
 
 /**
  * Created by Ferart on 10/1/2017.
@@ -14,6 +16,9 @@ public class Reviewer extends User {
     protected String academicInstitution;
     protected String employer;
     protected String personalWeb;
+
+    @Ignore
+    protected List<Evaluation> evaluations;
 
     //todo: userFriends, verified
 
