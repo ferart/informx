@@ -1,14 +1,19 @@
 package com.ferart.informx.models.data;
 
+import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.ferart.informx.models.data.preferences.AccessPreferencesDAO;
 import com.ferart.informx.models.data.preferences.AccessPreferencesDAOImpl;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
 
 /**
  * Created by Ferart on 8/27/2017.
@@ -21,5 +26,25 @@ public class DataModule {
     @Singleton
     AccessPreferencesDAO providesAccessPreferences(SharedPreferences sharedPreferences){
         return new AccessPreferencesDAOImpl(sharedPreferences);
+    }
+
+    @Provides
+    @Singleton
+    AppDatabase provideAppDatabase(Context context) {
+        return Room.databaseBuilder(context, AppDatabase.class, "devices")
+        .fallbackToDestructiveMigration()
+        .build();
+    }
+
+    @Provides
+    @Named("JSONMediaType")
+    MediaType providesMediaType(){
+        return MediaType.parse("application/json; charset=utf-8");
+    }
+
+    @Provides
+    @Singleton
+    OkHttpClient providesOkHttpClient(){
+        return new OkHttpClient();
     }
 }

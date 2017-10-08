@@ -2,6 +2,13 @@
 
 buildscript {
 
+    //build tools and targets
+    ext.compile_android_version = 26
+    ext.target_android_version = 26
+    ext.min_android_version = 19
+    ext.build_tools_android_version = "26.0.2"
+
+
     ext.support_version = "26.1.0"
     ext.junit_version = '4.12'
     ext.timber_version = "4.5.1"
@@ -9,10 +16,10 @@ buildscript {
     ext.okhttp_version = "3.8.1"
     ext.streamsupport_version = "1.5.6"
     ext.retrolambda_version = "3.7.0"
-    ext.arch_room_version = "1.0.0-alpha9"
+    ext.arch_room_version = "1.0.0-beta1"
     ext.google_services_version = "3.1.0"
     //firebase
-    ext.firebase_version = "11.0.2"
+    ext.firebase_version = "11.4.2"
 
 
     repositories {
@@ -23,12 +30,12 @@ buildscript {
         maven { url 'https://maven.google.com' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0-beta2'
+        classpath 'com.android.tools.build:gradle:3.0.0-beta7'
         classpath "me.tatarka:gradle-retrolambda:$retrolambda_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        classpath 'com.google.gms:google-services:3.1.0'
+        classpath "com.google.gms:google-services:$google_services_version"
     }
 }
 

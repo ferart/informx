@@ -1,0 +1,538 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "9127d3aa2ab3c46461afdffafc59f514",
+    "entities": [
+      {
+        "tableName": "User",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` TEXT NOT NULL, `name` TEXT, `lastName` TEXT, `email` TEXT, PRIMARY KEY(`uid`))",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lastName",
+            "columnName": "lastName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "email",
+            "columnName": "email",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_User_uid",
+            "unique": true,
+            "columnNames": [
+              "uid"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_User_uid` ON `${TABLE_NAME}` (`uid`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Reviewer",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` TEXT NOT NULL, `name` TEXT, `lastName` TEXT, `email` TEXT, `academicInstitution` TEXT, `employer` TEXT, `personalWeb` TEXT, PRIMARY KEY(`uid`))",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lastName",
+            "columnName": "lastName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "email",
+            "columnName": "email",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "academicInstitution",
+            "columnName": "academicInstitution",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "employer",
+            "columnName": "employer",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "personalWeb",
+            "columnName": "personalWeb",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_Reviewer_uid",
+            "unique": true,
+            "columnNames": [
+              "uid"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_Reviewer_uid` ON `${TABLE_NAME}` (`uid`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Administrator",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` TEXT NOT NULL, `name` TEXT, `lastName` TEXT, `email` TEXT, `academicInstitution` TEXT, `employer` TEXT, `personalWeb` TEXT, `phone` INTEGER NOT NULL, PRIMARY KEY(`uid`))",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "lastName",
+            "columnName": "lastName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "email",
+            "columnName": "email",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "academicInstitution",
+            "columnName": "academicInstitution",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "employer",
+            "columnName": "employer",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "personalWeb",
+            "columnName": "personalWeb",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "phone",
+            "columnName": "phone",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_Administrator_uid",
+            "unique": true,
+            "columnNames": [
+              "uid"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_Administrator_uid` ON `${TABLE_NAME}` (`uid`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Evaluation",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idEvaluation` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `reviewer_id` INTEGER NOT NULL, `proposal_id` INTEGER NOT NULL, `score` INTEGER NOT NULL, `review` TEXT, `fullEvaluationURL` TEXT, `quizEvaluation` TEXT, `quizAnswers` TEXT, FOREIGN KEY(`reviewer_id`) REFERENCES `Reviewer`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`proposal_id`) REFERENCES `CampaignProposal`(`idProposal`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "idEvaluation",
+            "columnName": "idEvaluation",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reviewerId",
+            "columnName": "reviewer_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idProposal",
+            "columnName": "proposal_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "score",
+            "columnName": "score",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "review",
+            "columnName": "review",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fullEvaluationURL",
+            "columnName": "fullEvaluationURL",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "quizEvaluation",
+            "columnName": "quizEvaluation",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "quizAnswers",
+            "columnName": "quizAnswers",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idEvaluation"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Evaluation_idEvaluation",
+            "unique": true,
+            "columnNames": [
+              "idEvaluation"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_Evaluation_idEvaluation` ON `${TABLE_NAME}` (`idEvaluation`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Reviewer",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "reviewer_id"
+            ],
+            "referencedColumns": [
+              "uid"
+            ]
+          },
+          {
+            "table": "CampaignProposal",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "proposal_id"
+            ],
+            "referencedColumns": [
+              "idProposal"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "CampaignProposal",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idProposal` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `candidate_id` INTEGER NOT NULL, `category_id` INTEGER NOT NULL, `title` TEXT, `content` TEXT, `metascore` REAL NOT NULL, FOREIGN KEY(`candidate_id`) REFERENCES `Candidate`(`idCandidate`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`category_id`) REFERENCES `CategoryCatalog`(`idCategory`) ON UPDATE CASCADE ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "idProposal",
+            "columnName": "idProposal",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idCandidate",
+            "columnName": "candidate_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idCategory",
+            "columnName": "category_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "content",
+            "columnName": "content",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "metascore",
+            "columnName": "metascore",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idProposal"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_CampaignProposal_idProposal",
+            "unique": true,
+            "columnNames": [
+              "idProposal"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_CampaignProposal_idProposal` ON `${TABLE_NAME}` (`idProposal`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Candidate",
+            "onDelete": "CASCADE",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "candidate_id"
+            ],
+            "referencedColumns": [
+              "idCandidate"
+            ]
+          },
+          {
+            "table": "CategoryCatalog",
+            "onDelete": "NO ACTION",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "category_id"
+            ],
+            "referencedColumns": [
+              "idCategory"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Candidate",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idCandidate` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `fullName` TEXT, `profileBackground` TEXT, `personalWebUrl` TEXT, `meanMetascore` REAL NOT NULL, `isIndependent` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "idCandidate",
+            "columnName": "idCandidate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fullName",
+            "columnName": "fullName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "profileBackground",
+            "columnName": "profileBackground",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "personalWebUrl",
+            "columnName": "personalWebUrl",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "meanMetascore",
+            "columnName": "meanMetascore",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isIndependent",
+            "columnName": "isIndependent",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idCandidate"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Candidate_idCandidate",
+            "unique": true,
+            "columnNames": [
+              "idCandidate"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_Candidate_idCandidate` ON `${TABLE_NAME}` (`idCandidate`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "CategoryCatalog",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idCategory` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `description` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "idCategory",
+            "columnName": "idCategory",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idCategory"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_CategoryCatalog_idCategory_name",
+            "unique": true,
+            "columnNames": [
+              "idCategory",
+              "name"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_CategoryCatalog_idCategory_name` ON `${TABLE_NAME}` (`idCategory`, `name`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "PoliticalParty",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idPoliticalParty` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `candidate_id` INTEGER NOT NULL, `name` TEXT, `description` TEXT, `webPageUrl` TEXT, FOREIGN KEY(`candidate_id`) REFERENCES `Candidate`(`idCandidate`) ON UPDATE CASCADE ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "idPoliticalParty",
+            "columnName": "idPoliticalParty",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idCandidate",
+            "columnName": "candidate_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "webPageUrl",
+            "columnName": "webPageUrl",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "idPoliticalParty"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_PoliticalParty_idPoliticalParty",
+            "unique": true,
+            "columnNames": [
+              "idPoliticalParty"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_PoliticalParty_idPoliticalParty` ON `${TABLE_NAME}` (`idPoliticalParty`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Candidate",
+            "onDelete": "NO ACTION",
+            "onUpdate": "CASCADE",
+            "columns": [
+              "candidate_id"
+            ],
+            "referencedColumns": [
+              "idCandidate"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"9127d3aa2ab3c46461afdffafc59f514\")"
+    ]
+  }
+}

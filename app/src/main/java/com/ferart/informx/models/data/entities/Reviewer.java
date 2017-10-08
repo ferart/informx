@@ -2,7 +2,6 @@ package com.ferart.informx.models.data.entities;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.Index;
 
 import java.util.List;
 
@@ -10,7 +9,7 @@ import java.util.List;
  * Created by Ferart on 10/1/2017.
  */
 
-@Entity(indices = {@Index(value = "uid", unique = true)}, primaryKeys = {"uid"})
+@Entity(inheritSuperIndices = true)
 public class Reviewer extends User {
 
     protected String academicInstitution;

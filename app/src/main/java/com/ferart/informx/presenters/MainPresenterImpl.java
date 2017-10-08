@@ -1,6 +1,5 @@
 package com.ferart.informx.presenters;
 
-import com.ferart.informx.views.activities.MainActivity;
 import com.ferart.informx.views.common.ViewController;
 import com.ferart.informx.views.controllers.MainController;
 

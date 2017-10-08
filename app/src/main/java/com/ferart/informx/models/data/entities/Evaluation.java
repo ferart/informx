@@ -96,4 +96,12 @@ public class Evaluation {
     public void setQuizAnswers(String[] quizAnswers) {
         this.quizAnswers = quizAnswers;
     }
+
+    public int getIdProposal() {
+        return idProposal;
+    }
+
+    public void setIdProposal(int idProposal) {
+        this.idProposal = idProposal;
+    }
 }

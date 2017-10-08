@@ -6,6 +6,7 @@ import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -20,7 +21,8 @@ public class Candidate {
     private String fullName;
     private String profileBackground;
     private String personalWebUrl;
-    private float meanMetascore; //mean of all metascores received from his/her proposals's evaluations
+    private float meanMetascore;   //mean of all metascores received from his/her proposals's evaluations
+    private boolean isIndependent; // independent from political party
 
     @Ignore
     private List<PoliticalParty> politicalParties;
@@ -72,5 +74,16 @@ public class Candidate {
 
     public void setPoliticalParties(List<PoliticalParty> politicalParties) {
         this.politicalParties = politicalParties;
+    }
+
+    public boolean isIndependent() {
+        return isIndependent;
+    }
+
+    public void setIndependent(boolean independent) {
+        isIndependent = independent;
+        if (independent){
+            politicalParties = Collections.emptyList();
+        }
     }
 }

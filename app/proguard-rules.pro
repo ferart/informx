@@ -42,3 +42,6 @@
 #auth
 -keepattributes Signature
 -keepattributes *Annotation*
+-keepclassmembers class com.ferart.informx.models.data.entities.** {
+  *;
+}
