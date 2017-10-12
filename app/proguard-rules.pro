@@ -45,3 +45,7 @@
 -keepclassmembers class com.ferart.informx.models.data.entities.** {
   *;
 }
+
+#StreamSupport
+#-keep class java8.** { *; }
+#-dontwarn java8.**

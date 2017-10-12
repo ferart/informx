@@ -34,6 +34,7 @@ public class Evaluation {
     private int reviewerId;
     @ColumnInfo(name = "proposal_id")
     private int idProposal;
+    private long creationTimestamp; //day of creation
     private int score; //(0-100]
     private String review;
     private String fullEvaluationURL;
@@ -103,5 +104,13 @@ public class Evaluation {
 
     public void setIdProposal(int idProposal) {
         this.idProposal = idProposal;
+    }
+
+    public long getCreationTimestamp() {
+        return creationTimestamp;
+    }
+
+    public void setCreationTimestamp(long creationTimestamp) {
+        this.creationTimestamp = creationTimestamp;
     }
 }

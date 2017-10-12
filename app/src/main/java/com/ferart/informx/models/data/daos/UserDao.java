@@ -1,5 +1,6 @@
 package com.ferart.informx.models.data.daos;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
@@ -8,6 +9,7 @@ import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
 import com.ferart.informx.models.data.entities.User;
+import com.ferart.informx.utils.SimpleCallback;
 
 import java.util.List;
 
@@ -18,9 +20,6 @@ import java.util.List;
 @Dao
 public interface UserDao {
 
-    @Insert
-    List<Long> insertAll(List<User> users);
-
     @Delete
     void delete(User user);
 
@@ -28,10 +27,10 @@ public interface UserDao {
     void insert(User user);
 
     @Update
-    void User(User user);
+    void update(User user);
 
     @Query("SELECT * from user WHERE uid LIKE :userId")
-    User findByUserId(String userId);
+    LiveData<User> findByUserId(String userId);
 
 
 

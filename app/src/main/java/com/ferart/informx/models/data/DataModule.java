@@ -4,8 +4,12 @@ import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.ferart.informx.models.data.daos.UserDao;
+import com.ferart.informx.models.data.daos.UserImplDao;
 import com.ferart.informx.models.data.preferences.AccessPreferencesDAO;
 import com.ferart.informx.models.data.preferences.AccessPreferencesDAOImpl;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import javax.inject.Named;
 import javax.inject.Singleton;
@@ -24,7 +28,7 @@ public class DataModule {
 
     @Provides
     @Singleton
-    AccessPreferencesDAO providesAccessPreferences(SharedPreferences sharedPreferences){
+    AccessPreferencesDAO providesAccessPreferences(SharedPreferences sharedPreferences) {
         return new AccessPreferencesDAOImpl(sharedPreferences);
     }
 
@@ -32,19 +36,30 @@ public class DataModule {
     @Singleton
     AppDatabase provideAppDatabase(Context context) {
         return Room.databaseBuilder(context, AppDatabase.class, "devices")
-        .fallbackToDestructiveMigration()
-        .build();
+                .fallbackToDestructiveMigration()
+                .build();
     }
 
     @Provides
     @Named("JSONMediaType")
-    MediaType providesMediaType(){
+    MediaType providesMediaType() {
         return MediaType.parse("application/json; charset=utf-8");
     }
 
     @Provides
     @Singleton
-    OkHttpClient providesOkHttpClient(){
+    OkHttpClient providesOkHttpClient() {
         return new OkHttpClient();
+    }
+
+
+    @Provides
+    DatabaseReference provideDatabaseReference() {
+        return FirebaseDatabase.getInstance().getReference();
+    }
+
+    @Provides
+    public UserDao provideUserDao(DatabaseReference databaseReference, AppDatabase internalDB) {
+        return new UserImplDao(databaseReference, internalDB);
     }
 }
