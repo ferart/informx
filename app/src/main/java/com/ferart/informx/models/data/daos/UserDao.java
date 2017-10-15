@@ -30,7 +30,7 @@ public interface UserDao {
     void update(User user);
 
     @Query("SELECT * from user WHERE uid LIKE :userId")
-    LiveData<User> findByUserId(String userId);
+    User findByUserId(String userId);
 
 
 

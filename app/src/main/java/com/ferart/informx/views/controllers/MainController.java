@@ -1,5 +1,8 @@
 package com.ferart.informx.views.controllers;
 
+import android.arch.lifecycle.LiveData;
+
+import com.ferart.informx.models.data.entities.User;
 import com.ferart.informx.views.common.ViewController;
 
 /**
@@ -7,4 +10,5 @@ import com.ferart.informx.views.common.ViewController;
  */
 
 public interface MainController {
+
 }

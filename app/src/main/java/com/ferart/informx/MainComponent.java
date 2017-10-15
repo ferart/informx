@@ -3,7 +3,8 @@ package com.ferart.informx;
 import com.ferart.informx.models.data.DataModule;
 import com.ferart.informx.models.data.preferences.AccessPreferencesDAO;
 import com.ferart.informx.models.domain.DomainModule;
-import com.ferart.informx.presenters.MainPresenter;
+import com.ferart.informx.models.domain.usermanager.CreateUserInteractor;
+import com.ferart.informx.presenters.MainScreenPresenter;
 import com.ferart.informx.presenters.PresentersModule;
 import com.ferart.informx.views.ViewsModule;
 import com.ferart.informx.views.activities.MainActivity;
@@ -33,11 +34,12 @@ public interface MainComponent {
     /**
      *Presentation Layer
      */
-    void inject(MainPresenter mainPresenter);
+    void inject(MainScreenPresenter mainPresenter);
 
     /**
      * Domain Layer
      */
+    void inject(CreateUserInteractor createUserInteractor);
 
     /**
      * Data Layer

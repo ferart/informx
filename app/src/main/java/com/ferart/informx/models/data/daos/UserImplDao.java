@@ -12,6 +12,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import timber.log.Timber;
 
 /**
@@ -23,6 +25,7 @@ public class UserImplDao implements UserDao {
     private DatabaseReference firebaseReference;
     private AppDatabase internalDB;
 
+    @Inject
     public UserImplDao(DatabaseReference firebaseReference, AppDatabase internalDB) {
         this.firebaseReference = firebaseReference;
         this.internalDB = internalDB;
@@ -45,7 +48,7 @@ public class UserImplDao implements UserDao {
     }
 
     @Override
-    public LiveData<User> findByUserId(String userId) {
+    public User findByUserId(String userId) {
        return internalDB.userDao().findByUserId(userId);
     }
 }

@@ -1,8 +1,11 @@
 package com.ferart.informx;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -20,9 +23,14 @@ public class ApplicationModule {
     }
 
     @Provides
-    SharedPreferences providesSharedPreferences(){
+    SharedPreferences providesSharedPreferences() {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
+    @Provides
+    @Singleton
+    public Context provideContext() {
+        return context;
+    }
 
 }

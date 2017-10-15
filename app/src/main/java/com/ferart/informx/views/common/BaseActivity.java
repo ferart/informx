@@ -1,10 +1,13 @@
 package com.ferart.informx.views.common;
 
+import android.arch.lifecycle.Lifecycle;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.ferart.informx.ApplicationManager;
+import com.ferart.informx.presenters.common.BasePresenter;
+
+import javax.annotation.Nonnull;
 
 /**
  * Created by Ferart on 9/16/2017.
@@ -17,8 +20,10 @@ public abstract class BaseActivity extends AppCompatActivity implements ViewCont
         super.onCreate(savedInstanceState);
         createInjection();
         attachToPresenter();
+        attachLifecycleToPresenter();
     }
-    public abstract void createInjection();
 
+    protected abstract void createInjection();
+    protected abstract void attachLifecycleToPresenter();
 
 }

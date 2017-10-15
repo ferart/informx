@@ -1,6 +1,10 @@
 package com.ferart.informx.presenters.common;
 
 
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.LifecycleOwner;
+
 import com.ferart.informx.views.common.ViewController;
 
 /**
@@ -9,14 +13,10 @@ import com.ferart.informx.views.common.ViewController;
  * this simplified lifecycle can be used by the MainActivity and/or Controllers
  */
 
-public  interface BasePresenter {
+public  interface BasePresenter extends LifecycleObserver {
     /*Simplified lifecycle of the activity or fragment
      */
-    public  void onAttached(ViewController viewController);
-    public  void onDetached();
-    public  void onResume();
-    public  void onPause();
-    public  void onBackPress();
-    public  void onDestroy();
-
+      void onAttached(ViewController viewController);
+      void onDetached();
+      void setOwnerLifecycle(Lifecycle lifecycle);
 }

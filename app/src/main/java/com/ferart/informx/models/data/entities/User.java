@@ -25,6 +25,16 @@ public class User {
     @Ignore
     protected Uri picture;
 
+    public User() {
+    }
+
+    @Ignore
+    public User(@NonNull String uid, String name, String lastName, String email) {
+        this.uid = uid;
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+    }
 
     public String getUid() {
         return uid;

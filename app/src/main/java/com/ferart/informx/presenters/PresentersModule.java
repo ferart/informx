@@ -1,5 +1,7 @@
 package com.ferart.informx.presenters;
 
+import com.ferart.informx.models.domain.usermanager.CreateUserInteractor;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -13,9 +15,8 @@ import dagger.Provides;
 public class PresentersModule {
 
     @Provides
-    @Singleton
-    public MainPresenter providesMainPresenter(){
-        return new MainPresenterImpl();
+    public MainScreenPresenter providesMainPresenter(CreateUserInteractor createUserInteractor){
+        return new MainScreenPresenterImpl(createUserInteractor);
     }
 
 }

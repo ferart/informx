@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "9127d3aa2ab3c46461afdffafc59f514",
+    "identityHash": "790a93188dfebcbb9e7cd3a816158672",
     "entities": [
       {
         "tableName": "User",
@@ -189,7 +189,7 @@
       },
       {
         "tableName": "Evaluation",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idEvaluation` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `reviewer_id` INTEGER NOT NULL, `proposal_id` INTEGER NOT NULL, `score` INTEGER NOT NULL, `review` TEXT, `fullEvaluationURL` TEXT, `quizEvaluation` TEXT, `quizAnswers` TEXT, FOREIGN KEY(`reviewer_id`) REFERENCES `Reviewer`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`proposal_id`) REFERENCES `CampaignProposal`(`idProposal`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idEvaluation` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `reviewer_id` INTEGER NOT NULL, `proposal_id` INTEGER NOT NULL, `creationTimestamp` INTEGER NOT NULL, `score` INTEGER NOT NULL, `review` TEXT, `fullEvaluationURL` TEXT, `quizEvaluation` TEXT, `quizAnswers` TEXT, FOREIGN KEY(`reviewer_id`) REFERENCES `Reviewer`(`uid`) ON UPDATE CASCADE ON DELETE CASCADE , FOREIGN KEY(`proposal_id`) REFERENCES `CampaignProposal`(`idProposal`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "idEvaluation",
@@ -206,6 +206,12 @@
           {
             "fieldPath": "idProposal",
             "columnName": "proposal_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "creationTimestamp",
+            "columnName": "creationTimestamp",
             "affinity": "INTEGER",
             "notNull": true
           },
@@ -532,7 +538,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"9127d3aa2ab3c46461afdffafc59f514\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"790a93188dfebcbb9e7cd3a816158672\")"
     ]
   }
 }
