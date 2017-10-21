@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "24216158949",
+    "firebase_url": "https://informx-df8dd.firebaseio.com",
+    "project_id": "informx-df8dd",
+    "storage_bucket": "informx-df8dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24216158949:android:c9c0fc98afad5748",
+        "android_client_info": {
+          "package_name": "com.ferart.informx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24216158949-ndlbal2b2dh9rh66vk3pjglu261sffc9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ferart.informx",
+            "certificate_hash": "352e4aa3cb3d49eb7b0a1a2c8666fd4ec9951df3"
+          }
+        },
+        {
+          "client_id": "24216158949-emfu5iegi5602fe9ee90t7p4p0cdbgg5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZldqO7he_p70NrQXVdh86Br1kQxwLtLg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24216158949-emfu5iegi5602fe9ee90t7p4p0cdbgg5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
