@@ -12,32 +12,36 @@ import android.support.annotation.NonNull;
  */
 @Entity(indices = {@Index(value = "idPoliticalParty", unique = true)}, foreignKeys = @ForeignKey(entity = Candidate.class,
         parentColumns = "idCandidate",
-        childColumns = "candidate_id",
+        childColumns = "idCandidate_fk",
         onUpdate = ForeignKey.CASCADE))
 public class PoliticalParty {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @NonNull
-    private int idPoliticalParty;
-    @ColumnInfo(name = "candidate_id")
-    private int idCandidate;
+    private String idPoliticalParty;
+    @ColumnInfo(name = "idCandidate_fk")
+    private String idCandidate;
     private String name;
+    private String acronym;
     private String description;
     private String webPageUrl;
+    private String logoUrl;
+    private String address;
+    private String phone;
 
     @NonNull
-    public int getIdPoliticalParty() {
+    public String getIdPoliticalParty() {
         return idPoliticalParty;
     }
 
-    public void setIdPoliticalParty(@NonNull int idPoliticalParty) {
+    public void setIdPoliticalParty(@NonNull String idPoliticalParty) {
         this.idPoliticalParty = idPoliticalParty;
     }
 
-    public int getIdCandidate() {
+    public String getIdCandidate() {
         return idCandidate;
     }
 
-    public void setIdCandidate(int idCandidate) {
+    public void setIdCandidate(String idCandidate) {
         this.idCandidate = idCandidate;
     }
 
@@ -63,5 +67,13 @@ public class PoliticalParty {
 
     public void setWebPageUrl(String webPageUrl) {
         this.webPageUrl = webPageUrl;
+    }
+
+    private String getLogoUrl() {
+        return logoUrl;
+    }
+
+    private void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
     }
 }

@@ -19,9 +19,11 @@ public abstract  class BaseInteractor implements Interactor {
     }
 
     public abstract void run();
+    public abstract void onExit();
 
     public void execute() {
         this.executor.run(this);
+        onExit();
     }
 
     protected final void postOnMainThread(final Runnable runnable) {

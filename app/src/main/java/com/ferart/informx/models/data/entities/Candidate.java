@@ -15,9 +15,9 @@ import java.util.List;
 @Entity(indices = {@Index(value = "idCandidate", unique = true)})
 public class Candidate {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @NonNull
-    private int idCandidate;
+    private String idCandidate;
     private String fullName;
     private String profileBackground;
     private String personalWebUrl;
@@ -28,11 +28,11 @@ public class Candidate {
     private List<PoliticalParty> politicalParties;
 
     @NonNull
-    public int getIdCandidate() {
+    public String getIdCandidate() {
         return idCandidate;
     }
 
-    public void setIdCandidate(@NonNull int idCandidate) {
+    public void setIdCandidate(@NonNull String idCandidate) {
         this.idCandidate = idCandidate;
     }
 

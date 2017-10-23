@@ -24,6 +24,7 @@ public class UserImplDao implements UserDao {
 
     private DatabaseReference firebaseReference;
     private AppDatabase internalDB;
+    private String NODE = "user";
 
     @Inject
     public UserImplDao(DatabaseReference firebaseReference, AppDatabase internalDB) {
@@ -34,17 +35,17 @@ public class UserImplDao implements UserDao {
 
     @Override
     public void delete(User user) {
-        firebaseReference.child("user").child(user.getUid()).removeValue((databaseError, databaseReference) -> internalDB.userDao().delete(user));
+        firebaseReference.child(NODE).child(user.getUid()).removeValue((databaseError, databaseReference) -> internalDB.userDao().delete(user));
     }
 
     @Override
     public void insert(User user) {
-        firebaseReference.child("user").child(user.getUid()).setValue(user, (databaseError, databaseReference) -> internalDB.userDao().insert(user));
+        firebaseReference.child(NODE).child(user.getUid()).setValue(user, (databaseError, databaseReference) -> internalDB.userDao().insert(user));
     }
 
     @Override
     public void update(User user) {
-        firebaseReference.child("user").child(user.getUid()).setValue(user, (databaseError, databaseReference) -> internalDB.userDao().update(user));
+        firebaseReference.child(NODE).child(user.getUid()).setValue(user, (databaseError, databaseReference) -> internalDB.userDao().update(user));
     }
 
     @Override

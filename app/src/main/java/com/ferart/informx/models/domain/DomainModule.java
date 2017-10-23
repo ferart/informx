@@ -1,6 +1,10 @@
 package com.ferart.informx.models.domain;
 
+import com.ferart.informx.models.data.daos.CandidateDao;
+import com.ferart.informx.models.data.daos.PoliticalPartyDao;
 import com.ferart.informx.models.data.daos.UserDao;
+import com.ferart.informx.models.domain.administration.CreateCandidateInteractor;
+import com.ferart.informx.models.domain.administration.QueryPoliticalPartiesInteractor;
 import com.ferart.informx.models.domain.thread.Executor;
 import com.ferart.informx.models.domain.thread.MainThread;
 import com.ferart.informx.models.domain.thread.MainThreadImpl;
@@ -34,6 +38,16 @@ public class DomainModule {
     @Provides
     CreateUserInteractor provideCreateUserInteractor(Executor executor, MainThread mainThread, UserDao userDao) {
         return new CreateUserInteractor(executor, mainThread, userDao);
+    }
+
+    @Provides
+    QueryPoliticalPartiesInteractor proviceCreatePoliticalPartyInteractor(Executor executor, MainThread mainThread, PoliticalPartyDao politicalPartyDao) {
+        return new QueryPoliticalPartiesInteractor(executor, mainThread, politicalPartyDao);
+    }
+
+    @Provides
+    CreateCandidateInteractor provideCreateCandidateInteractor(Executor executor, MainThread mainThread, CandidateDao candidateDao, PoliticalPartyDao politicalPartyDao) {
+        return new CreateCandidateInteractor(executor, mainThread, candidateDao, politicalPartyDao);
     }
 
 }

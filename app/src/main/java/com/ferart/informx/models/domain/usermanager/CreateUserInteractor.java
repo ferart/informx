@@ -1,7 +1,5 @@
 package com.ferart.informx.models.domain.usermanager;
 
-import android.arch.lifecycle.LiveData;
-
 import com.ferart.informx.models.data.daos.UserDao;
 import com.ferart.informx.models.data.entities.User;
 import com.ferart.informx.models.domain.common.BaseInteractor;
@@ -31,13 +29,18 @@ public class CreateUserInteractor extends BaseInteractor {
 
     @Override
     public void run() {
-        if (user == null){
+        if (user == null && userLifeCycleCallback != null) {
             throw  new IllegalArgumentException("User can not be null or empty");
         }
 
        liveUser = userDao.findByUserId(user.getUid());
        postOnMainThread(()->userLifeCycleCallback.onUserFound(liveUser));
 
+    }
+
+    @Override
+    public void onExit() {
+        userLifeCycleCallback = null;
     }
 
     public void setUser(User user) {
