@@ -28,7 +28,7 @@ public interface PoliticalPartyDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(List<PoliticalParty> politicalParties);
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     void updatePoliticalPartyCandidate(PoliticalParty politicalParty);
 
     @Query("SELECT * from politicalparty WHERE name LIKE :politicalPartyName")

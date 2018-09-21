@@ -1,5 +1,7 @@
 package com.ferart.informx.models.data.entities;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
@@ -13,6 +15,7 @@ import java.util.List;
  * Created by Ferart on 10/1/2017.
  */
 @Entity(indices = {@Index(value = "idCandidate", unique = true)})
+@IgnoreExtraProperties
 public class Candidate {
 
     @PrimaryKey
